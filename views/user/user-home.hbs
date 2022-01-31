@@ -1,0 +1,72 @@
+<nav class="navbar navbar-expand-lg navbar-light bg-success">
+    <div class="container-fluid">
+        <a class="navbar-brand" href="#">Laptop Mart</a>
+        <button
+            class="navbar-toggler"
+            type="button"
+            data-bs-toggle="collapse"
+            data-bs-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent"
+            aria-expanded="false"
+            aria-label="Toggle navigation"
+        >
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                <li class="nav-item">
+                    <a class="nav-link active" aria-current="page" href="#userHome">Home</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link active" aria-current="page" href="#">My Cart</a>
+                </li>
+
+            </ul>
+            {{#if user}}
+                <p style="font-size: 20px; margin-right: 20px;" >welcome {{user.username}}</p>
+            {{/if}}
+
+            <form class="d-flex justify-content-center">
+
+                {{#if user}}
+
+                    <a href="/logout"><button class="bg-dark text-light" type="button">Logout</button></a>
+
+                {{else}}
+                    <a href="/login"><button class="bg-dark text-light" type="button">Login</button></a>
+                {{/if}}
+            </form>
+
+        </div>
+
+    </div>
+
+</nav>
+
+<section class="container mt-4">
+    <div class="row">
+        {{#each items}}
+            <div class="col-md-3 my-2">
+                <div class="card" style="width: 16rem;">
+                    <img src="{{this.image}}" class="card-img-top img-fluid" alt="..." />
+                    <div class="card-body">
+                        <h5 class="card-title text-info">{{this.title}}</h5>
+                        <p class="fs-4 fw-bold">{{this.price}}</p>
+
+                        <ul>
+                            <li class="card-text">{{this.features}}</li>
+                            <li class="card-text">{{this.os}}</li>
+                            <li class="card-text">{{this.graphics}} </li>
+                            <li class="card-text">{{this.RAM}}</li>
+                            <li class="card-text">{{this.storage}}</li>
+                        </ul>
+                        <a href="#" class="btn btn-primary">Buy Now</a>
+                        <a href="#" class="btn btn-danger text-light">Add to cart</a>
+                    </div>
+                </div>
+
+            </div>
+        {{/each}}
+    </div>
+
+</section>
